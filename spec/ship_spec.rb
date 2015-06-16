@@ -1,24 +1,30 @@
-# require 'ship'
+require 'ship'
 
-# describe Ship do 
+describe Ship do
 
-#   it "has a size" do
-#     expect(subject).to respond_to(:size)
-#   end
+subject {Ship.new (double :position)}
 
-#   it "size can change" do
-#     subject.size= 4
-#     expect(subject.size= 3).to eq(3)
-#   end
+  it 'starts as floating' do
+    expect(subject.floating).to be true
+  end
 
-  # it "has more than one type" do
-  #   expect(subject).to respond_to(:type)
-  # end
+  it 'has a size when created' do 
+    expect(subject.size).not_to eq " "
+  end
 
+  it 'has a position when created' do
+    expect(subject.position).not_to eq " "
+  end
 
+  it 'has a direction when created' do
+    expect(subject.direction).not_to eq " "
+  end
 
-
-
-
-  
-# end
+  describe 'sunk?' do
+  	it 'returns the state of the ship, is it floating or sunk?' do
+      ship = Ship.new 'A1'
+      ship.hits << 'A1'
+  		expect(ship.sunk?).to eq false
+  	end
+  end
+end

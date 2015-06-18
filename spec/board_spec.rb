@@ -1,6 +1,7 @@
 require 'board'
 
 describe Board do
+  let(:ship) {double :ship, position: 'C5'}
 
   context 'when created' do
  		it 'creates an array' do
@@ -14,18 +15,21 @@ describe Board do
   	end
 
     it 'places a ship' do
-      ship = double :ship
       subject.place ship
       expect(subject.ships).to eq [ship]
     end
   end
 
   context 'receive_hit' do
+    before(:each) {subject.place(ship)}
+
     it 'receives a hit' do
-      ship = double :ship, position: 'C5'
-      subject.place(ship)
-      expect(ship).to receive :hit
+      expect(ship).to receive :receive_hit
       subject.receive_hit 'C5'
+    end
+
+    it 'reports when missed' do
+      expect(subject.receive_hit 'E3').to eq 'miss'
     end
   end
 end

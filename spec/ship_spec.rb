@@ -9,9 +9,9 @@ describe Ship do
 		end
 	end
 
-	context 'receiving a hit' do 
-		it 'can be hit' do 
-			subject.hit
+	context 'receiving a hit' do
+		it 'can be hit' do
+			subject.receive_hit
 			expect(subject).to be_hit
 		end
 	end

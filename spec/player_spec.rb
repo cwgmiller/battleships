@@ -18,4 +18,5 @@ describe Player do
     expect(board).to receive :place
     subject.place(ship)
   end
+
 end

@@ -31,6 +31,17 @@ describe Board do
     it 'reports when missed' do
       expect(subject.receive_hit 'E3').to eq 'miss'
     end
+
+    it 'checks if a hit has been added to an array' do 
+      board = Board.new 
+      board.receive_hit "C5"
+      expect(subject.hits).to eq ["C5"]
+    end
+
+    it 'checks if a miss has been added to an array' do 
+      subject.receive_hit "D3"
+      expect(subject.misses).to eq ["D3"]
+    end
   end
 
   context 'sunken ships' do

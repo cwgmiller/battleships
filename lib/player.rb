@@ -7,6 +7,10 @@ def initialize board
 end
 
 def lost?
- board.all_ships_sunk?
+  board.all_ships_sunk?
+end
+
+def place ship
+	board.place ship
 end
 end

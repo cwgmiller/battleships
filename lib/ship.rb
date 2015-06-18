@@ -36,4 +36,17 @@ class Ship
   def zero_health?
     @life == 0
   end
+
+  def north
+  end
+
+  def south
+  end
+
+  def east
+  end
+
+  def west
+  end
+
 end

@@ -10,6 +10,7 @@ class Board
 
 	def place ship
 		fail "Cannot place ship off board" unless off_board?(ship)
+		fail 'Space occupied' if location_occupied? ship
 		ships << ship
 	end
 
@@ -40,6 +41,14 @@ class Board
 	end
 
 	private
+
+	def location_occupied? ship
+		occupied = false
+		ships.each do |placed_ship|
+			occupied = true if ship.position == placed_ship.position
+		end
+		occupied
+	end
 
 	def hit_report hit
 		hit ? 'hit' : 'miss'

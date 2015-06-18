@@ -1,8 +1,12 @@
-class Board 
+class Board
 
 	attr_reader :ships
-	
-	def initialize 
+
+	def initialize
 		@ships = []
+	end
+
+	def place ship
+
 	end
 end

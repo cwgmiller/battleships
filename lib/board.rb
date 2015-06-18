@@ -7,6 +7,12 @@ class Board
 	end
 
 	def place ship
-		ships << ship
+		ships << ship 
+	end
+
+	def receive_hit target
+		ships.each do |ship|
+			ship.hit if ship.position == target
+		end
 	end
 end

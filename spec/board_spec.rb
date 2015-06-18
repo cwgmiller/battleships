@@ -40,7 +40,11 @@ describe Board do
       expect(subject).to be_all_ships_sunk
     end
 
-    xit 'reports when not all ships are sunk' do
+    it 'reports when not all ships are sunk' do
+      sunken_ship = double :ship, position: 'C5', sunk?: false
+      subject.place(sunken_ship)
+      expect(subject).not_to be_all_ships_sunk
+
     end
   end
 end

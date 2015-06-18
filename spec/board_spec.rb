@@ -19,4 +19,13 @@ describe Board do
       expect(subject.ships).to eq [ship]
     end
   end
+
+  context 'receive_hit' do
+    it 'receives a hit' do
+      ship = double :ship, position: 'C5'
+      subject.place(ship)
+      expect(ship).to receive :hit
+      subject.receive_hit 'C5'
+    end
+  end
 end

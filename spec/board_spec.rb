@@ -33,8 +33,11 @@ describe Board do
     end
   end
 
-  context 'sunken ships' do 
-    xit 'reports when all ships are sunk' do 
+  context 'sunken ships' do
+    it 'reports when all ships are sunk' do
+      sunken_ship = double :ship, position: 'C5', sunk?: true
+      subject.place(sunken_ship)
+      expect(subject).to be_all_ships_sunk
     end
 
     xit 'reports when not all ships are sunk' do

@@ -8,7 +8,7 @@ describe Ship do
 			expect(subject.position).to eq 'A1'
 		end
 
-		it 'has a size' do 
+		it 'has a size' do
 			expect(subject.size).to eq 2
 		end
 	end
@@ -19,4 +19,12 @@ describe Ship do
 			expect(subject).to be_hit
 		end
 	end
+
+  context 'sunk' do
+    it 'can be sunk' do
+      subject.receive_hit
+      subject.receive_hit
+      expect(subject).to be_sunk
+    end
+  end
 end

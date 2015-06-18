@@ -32,4 +32,12 @@ describe Board do
       expect(subject.receive_hit 'E3').to eq 'miss'
     end
   end
+
+  context 'sunken ships' do 
+    xit 'reports when all ships are sunk' do 
+    end
+
+    xit 'reports when not all ships are sunk' do
+    end
+  end
 end

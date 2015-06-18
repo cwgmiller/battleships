@@ -1,10 +1,12 @@
 class Ship
 
-  attr_reader :position
+  attr_reader :position, :size
 
-  def initialize position
+
+  def initialize position, size
     @position = position
     @hit = false
+    @size = size
   end
 
   def receive_hit

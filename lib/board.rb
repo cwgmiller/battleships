@@ -11,8 +11,20 @@ class Board
 	end
 
 	def receive_hit target
+		hit = false
+
 		ships.each do |ship|
-			ship.receive_hit if ship.position == target
+			if ship.position == target
+				ship.receive_hit
+				hit = true
+			end
 		end
+		hit_report hit
+	end
+
+	private
+
+	def hit_report hit
+		hit ? 'hit' : 'miss'
 	end
 end

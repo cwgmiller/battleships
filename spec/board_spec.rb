@@ -19,8 +19,13 @@ describe Board do
       expect(subject.ships).to eq [ship]
     end
 
-    it 'fails when placed off board' do
+    it 'fails when placed off board (row error)' do
       ship = double :ship, position: 'J11'
+      expect{subject.place ship}.to raise_error 'Cannot place ship off board' 
+    end
+
+     it 'fails when placed off board (column error)' do
+      ship = double :ship, position: 'P5'
       expect{subject.place ship}.to raise_error 'Cannot place ship off board' 
     end
 

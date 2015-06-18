@@ -1,9 +1,11 @@
 class Board
 
-	attr_reader :ships
+	attr_reader :ships, :hits, :misses
 
 	def initialize
 		@ships = []
+		@hits = []
+		@misses = []
 	end
 
 	def place ship
@@ -16,13 +18,19 @@ class Board
 		ships.each do |ship|
 			if ship.position == target
 				ship.receive_hit
+				hits << target
 				hit = true
 			end
 		end
+
+		unless hit
+			misses << target
+		end
+
 		hit_report hit
 	end
 
-	def all_ships_sunk? 
+	def all_ships_sunk?
 		count = 0
 		ships.each do |ship|
 			count += 1 if ship.sunk?

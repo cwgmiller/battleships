@@ -18,6 +18,12 @@ describe Board do
       subject.place ship
       expect(subject.ships).to eq [ship]
     end
+
+    it 'fails when placed off board' do
+      ship = double :ship, position: 'J11'
+      expect{subject.place ship}.to raise_error 'Cannot place ship off board' 
+    end
+
   end
 
   context 'receive_hit' do
@@ -32,13 +38,15 @@ describe Board do
       expect(subject.receive_hit 'E3').to eq 'miss'
     end
 
-    it 'checks if a hit has been added to an array' do 
-      board = Board.new 
+    it 'checks if a hit has been added to an array' do
+      board = Board.new
+      ship = double :ship, receive_hit: true, position: 'C5'
+      board.place (ship)
       board.receive_hit "C5"
-      expect(subject.hits).to eq ["C5"]
+      expect(board.hits).to eq ["C5"]
     end
 
-    it 'checks if a miss has been added to an array' do 
+    it 'checks if a miss has been added to an array' do
       subject.receive_hit "D3"
       expect(subject.misses).to eq ["D3"]
     end
@@ -58,4 +66,7 @@ describe Board do
 
     end
   end
+
+
+
 end

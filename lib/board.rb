@@ -7,6 +7,6 @@ class Board
 	end
 
 	def place ship
-
+		ships << ship
 	end
 end

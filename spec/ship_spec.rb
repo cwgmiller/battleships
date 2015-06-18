@@ -1,7 +1,7 @@
 require 'ship'
 
 describe Ship do
-	subject {Ship.new 'A1', 2}
+	subject {Ship.new 'A1', 2, 'N'}
 
 	context 'when created' do
 		it 'has position' do
@@ -10,6 +10,10 @@ describe Ship do
 
 		it 'has a size' do
 			expect(subject.size).to eq 2
+		end
+
+		it 'has a direction' do
+			expect(subject.direction).to eq 'N'
 		end
 	end
 
